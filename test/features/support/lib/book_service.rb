@@ -1,5 +1,10 @@
 require 'httparty'
 
+#
+# HTTParty mixin class that abstracts the ReST service so that the cucumber
+# steps are small and more readable. Also any changes to the service will
+# affect the steps in a much smaller way.
+#
 class BookService
 	include HTTParty
 	base_uri "http://localhost:4567"
