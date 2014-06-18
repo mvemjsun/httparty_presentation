@@ -17,7 +17,7 @@ We use HTTParty to test these requests via cucumber features.
 * Logon to MySQL and create a database using `create database httparty`
 * Run the database migration `rake db:migrate`
 * Populate the database with seed data using `rake db:prepare`. Note that this step creates random data in the
-  book table and you will need to adjust your feature examples to match your data (i.e the isbn, title, author & currency columns)
+  `books` table and you will need to adjust your feature examples to match your data (i.e the `isbn`, `title`, `author` & `currency` columns)
 * Check the database to ensure that the book table is created with the test data populated.
 
 ```
