@@ -4,11 +4,12 @@
 
 Exploring HTTParty to test a ReST web service. This repository implements a Sinatra application as a ReST web service that responds to the below GET requests (the actual 10 digit numbers may be different depending on the data in your database).
 
-1. /books/json
+```
+1. /books/json`
 2. /books/xml
 3. /book/isbn/1234567890/json
 4. /book/isbn/1234567890/xml
-
+```
 We use HTTParty to test these requests via cucumber features.
 
 ### To get Started
