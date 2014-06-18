@@ -1,5 +1,10 @@
 ## Sinatra HTTParty and more
-> Exploring HTTParty to test a ReST web service
+> Exploring HTTParty to test a ReST web service. This repository implements a Sinatra application as a ReSt web service that responds to the below GET requests.
+1. /books/json
+2. /books/xml
+3. /book/isbn/1234567890/json
+4. /book/isbn/1234567890/xml
+We use HTTParty to test these requests via cucumber features.
 
 ### To get Started
 
@@ -68,10 +73,10 @@ In its simplest form it can be used directly within the code using
 The response can be then probed further using the various methods. Some of the useful ones are the
 `body`, `code`,`status` & `headers` methods.
 
-A typical usage implemented here is 
+A typical usage could be
 ```ruby
 Given(/^A user requests a json request for get \/books\/json$/) do 
-  @response = @bookService.get_books
+  @response = HTTParty.get("http://localhost:4567/books/json")
 end
 ```
 
@@ -156,3 +161,4 @@ I have just scratched the surface of what HTTParty can do, but hope that you fin
 #### References
 
 1. [HTTParty on Github] (https://github.com/jnunemaker/httparty)
+2. [Sinatra] (http://www.sinatrarb.com/)
