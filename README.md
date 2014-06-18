@@ -18,7 +18,7 @@ We use HTTParty to test these requests via cucumber features.
 * Run the database migration `rake db:migrate`
 * Populate the database with seed data using `rake db:prepare`. Note that this step creates random data in the
   `books` table and you will need to adjust your feature examples to match your data (i.e the `isbn`, `title`, `author` & `currency` columns)
-* Check the database to ensure that the book table is created with the test data populated.
+* Check the database to ensure that the `books` table is created with the test data populated.
 
 ```
 +------------+--------------+------+-----+---------+----------------+
@@ -37,7 +37,7 @@ We use HTTParty to test these requests via cucumber features.
 ```
 
 * Start the Sinatra webservice on a port of your choice using `rackup -p 4567`.
-* To run the tests `rake test:normal` which will result in
+* To run the tests execute `rake test:normal` which will result in (Please change example data to match your database data)
 
 ```
   Scenario: Request a full book list in json format
@@ -94,8 +94,6 @@ complexities can be hidden away into the "service class". The way this can be ac
 class BookService
 	include HTTParty
 	base_uri "http://localhost:4567"
-
-	...
 end	
 ```
 
@@ -104,8 +102,9 @@ With this approach I can now abstract the service interaction as follows
 ```ruby
 class BookService
 
-	...
-
+	include HTTParty
+	base_uri "http://localhost:4567"
+	
 	def get_books(format=:json)
 		response = self.class.get("/books/json") if format == :json
 		response = self.class.get("/books/xml") if format == :xml
@@ -133,7 +132,7 @@ class BookService
 		end
 	end
 end
-...
+```
 
 ##### Cucumber steps and refactoring
 
